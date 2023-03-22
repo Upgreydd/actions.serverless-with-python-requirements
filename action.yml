@@ -8,3 +8,13 @@ runs:
 branding:
   icon: 'fast-forward'
   color: 'red'
+
+inputs:
+  config_args:
+    default: ''
+    description: 'Additional arguments you want to set for credentials configs'
+    required: false
+  args:
+    default: ''
+    description: 'Additional arguments you want to set for deploy command'
+    required: false

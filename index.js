@@ -7,6 +7,8 @@ var exeq = require('exeq')
 //  Input variables
 var CANARY_DEPLOYMENTS = core.getInput('canary-deployments')
 var DOMAIN_MANAGER = core.getInput('domain-manager')
+var ARGS = code.getInput('args')
+var CONFIG_ARGS = code.getInput('config_args')
 
 //  Installs Serverless and specified plugins
 async function installServerlessAndPlugins() {
@@ -23,9 +25,9 @@ async function runServerlessDeploy() {
   await exeq(
     `echo Running sls deploy...`,
     `if [ ${process.env.AWS_ACCESS_KEY_ID} ] && [ ${process.env.AWS_SECRET_ACCESS_KEY} ]; then
-      sls config credentials --provider aws --key ${process.env.AWS_ACCESS_KEY_ID} --secret ${process.env.AWS_SECRET_ACCESS_KEY} --verbose
+      sls config credentials --provider aws --key ${process.env.AWS_ACCESS_KEY_ID} --secret ${process.env.AWS_SECRET_ACCESS_KEY} --verbose ${CONFIG_ARGS}
     fi`,
-    `sls deploy --verbose`
+    `sls deploy --verbose ${ARGS}`
   )
 }
 

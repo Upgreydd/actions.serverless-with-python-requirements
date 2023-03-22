@@ -7,8 +7,8 @@ var exeq = require('exeq')
 //  Input variables
 var CANARY_DEPLOYMENTS = core.getInput('canary-deployments')
 var DOMAIN_MANAGER = core.getInput('domain-manager')
-var ARGS = code.getInput('args')
-var CONFIG_ARGS = code.getInput('config_args')
+var ARGS = core.getInput('args')
+var CONFIG_ARGS = core.getInput('config_args')
 
 //  Installs Serverless and specified plugins
 async function installServerlessAndPlugins() {
